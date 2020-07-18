@@ -2,7 +2,11 @@
 
 namespace Genius257\OpenAPI_Generator\Swagger;
 
-abstract class Swagger implements \JsonSerializable
+use JsonSerializable;
+use ReflectionClass;
+use ReflectionProperty;
+
+abstract class Swagger implements JsonSerializable
 {
     /**
      * Converts class to array
@@ -13,8 +17,8 @@ abstract class Swagger implements \JsonSerializable
      */
     public function toArray($skipNull = true)
     {
-        $reflectionClass = new \ReflectionClass($this);
-        $properties = $reflectionClass->getProperties(\ReflectionProperty::IS_PUBLIC);
+        $reflectionClass = new ReflectionClass($this);
+        $properties = $reflectionClass->getProperties(ReflectionProperty::IS_PUBLIC);
         $array = [];
         /** @var \ReflectionProperty $property */
         foreach ($properties as $property) {
