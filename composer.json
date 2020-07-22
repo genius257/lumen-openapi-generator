@@ -1,0 +1,51 @@
+{
+    "name": "genius257/lumen-openapi-generator",
+    "description": "generate your API documentation based on phpDoc blocks for route Controllers/Callables",
+    "keywords": [
+        "lumen"
+    ],
+    "homepage": "https://github.com/genius257/lumen-openapi-generator",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Anders Pedersen",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.2",
+        "phpdocumentor/reflection": " ~4.0",
+        "illuminate/support": ">1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Genius257\\OpenAPI_Generator\\": "src"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Genius257\\OpenAPI_Generator\\Test\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Spatie\\Permission\\PermissionServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
