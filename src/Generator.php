@@ -7,6 +7,7 @@ use Genius257\OpenAPI_Generator\Swagger\Parameter;
 use Genius257\OpenAPI_Generator\Swagger\PathItem;
 use Genius257\OpenAPI_Generator\Swagger\Responses;
 use Laravel\Lumen\Routing\Router;
+use phpDocumentor\Reflection\DocBlock\Tags\InvalidTag;
 
 class Generator {
     /**
@@ -36,13 +37,20 @@ class Generator {
             $pathItem->$method->summary = $route->getSummary();
             $pathItem->$method->tags = $route->getDocBlock()->getTagsByName('tag');
             $responses = new Responses();
+
+            //var_dump(array_map(function($tag) {return get_class($tag);}, $route->getDocBlock()->getTagsByName('class')));
+
             foreach ($route->getDocBlock()->getTagsByName('response') as $response) {
                 /** @var \Genius257\OpenAPI_Generator\Tags\Response $response */
                 //var_dump($response->getStatus(), $response->toSwagger());
-                $responses->add(
-                    (string) $response->getStatus(),
-                    $response
-                );
+                if ($response instanceof \Genius257\OpenAPI_Generator\Tags\Response) {
+                    $responses->add(
+                        (string) $response->getStatus(),
+                        $response
+                    );
+                } else {
+                    // TODO: here we handle invalid tags and unexspected classes from the phpDocumentor Reflection DocBlock logic.
+                }
             }
             $pathItem->$method->responses = $responses;
             foreach ($annotations as $object) {
