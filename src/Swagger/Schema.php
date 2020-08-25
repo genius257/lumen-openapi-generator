@@ -10,24 +10,82 @@ namespace Genius257\OpenAPI_Generator\Swagger;
  */
 class Schema extends Swagger
 {
+    /** @var string */
     public $title;
 
+    /**
+     * The value of "multipleOf" MUST be a number, strictly greater than 0.
+     *
+     * A numeric instance is valid only if division by this keyword's value results in an integer.
+     *
+     * @var int
+     */
     public $multipleOf;
 
+    /**
+     * The value of "maximum" MUST be a number, representing an inclusive upper limit for a numeric instance.
+     *
+     * If the instance is a number, then this keyword validates only if the instance is less than or exactly equal to "maximum".
+     *
+     * @var int
+     */
     public $maximum;
 
+    /**
+     * The value of "exclusiveMaximum" MUST be number, representing an exclusive upper limit for a numeric instance.
+     *
+     * If the instance is a number, then the instance is valid only if it has a value strictly less than (not equal to) "exclusiveMaximum".
+     * 
+     * @var int
+     */
     public $exclusiveMaximum;
 
+    /**
+     * The value of "minimum" MUST be a number, representing an inclusive lower limit for a numeric instance.
+     *
+     * If the instance is a number, then this keyword validates only if the instance is greater than or exactly equal to "minimum".
+     *
+     * @var int
+     */
     public $minimum;
 
+    /**
+     * The value of "exclusiveMinimum" MUST be number, representing an exclusive lower limit for a numeric instance.
+     *
+     * If the instance is a number, then the instance is valid only if it has a value strictly greater than (not equal to) "exclusiveMinimum".
+     *
+     * @var int
+     */
     public $exclusiveMinimum;
 
+    /**
+     * The value of this keyword MUST be a non-negative integer.
+     *
+     * A string instance is valid against this keyword if its length is less than, or equal to, the value of this keyword.
+     *
+     * The length of a string instance is defined as the number of its characters as defined by RFC 8259 [RFC8259].
+     *
+     * @var int
+     */
     public $maxLength;
 
+    /**
+     * The value of this keyword MUST be a non-negative integer.
+     *
+     * A string instance is valid against this keyword if its length is greater than, or equal to, the value of this keyword.
+     *
+     * The length of a string instance is defined as the number of its characters as defined by RFC 8259 [RFC8259].
+     *
+     * Omitting this keyword has the same behavior as a value of 0.
+     *
+     * @var int
+     */
     public $minLength;
 
     /**
-     * This string SHOULD be a valid regular expression, according to the ECMA 262 regular expression dialect
+     * This string SHOULD be a valid regular expression, according to the ECMA 262 regular expression dialect.
+     *
+     * @var string
      */
     public $pattern;
 
@@ -103,6 +161,8 @@ class Schema extends Swagger
 
     /**
      * CommonMark syntax MAY be used for rich text representation.
+     *
+     * @var string
      *
      * @see http://spec.commonmark.org/ CommonMark syntax
      */
