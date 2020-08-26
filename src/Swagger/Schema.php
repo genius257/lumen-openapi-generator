@@ -148,7 +148,7 @@ class Schema extends Swagger
     /**
      * Property definitions MUST be a Schema Object and not a standard JSON Schema (inline or referenced).
      *
-     * @var Schema
+     * @var Schema[]
      */
     public $properties;
 
